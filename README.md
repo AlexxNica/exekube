@@ -2,19 +2,20 @@
 
 # Exekube
 
-*Exekube* is a declarative framework for administering Kubernetes clusters and deploying containerized software onto them. Here is a quick example of what Exekube modules (the code you will author) look like:
+*Exekube* is a declarative ("Everything as Code") framework for administering Kubernetes clusters and deploying containerized software onto them. Exekube offers you full control over your infrastructure and container orchestration while also having a great default state with a *one-click experience*.
+
+Here is a quick example of how you'd deploy CI tools using Exekube:
 
 ```tf
 # ------------------------------------------------------------------------------
-# Exekube 0.1.0 | live/prod/kube-ci/inputs.tfvars
+# Exekube 0.1.0
+# live/prod/kube-ci/inputs.tfvars | HCL (HashiCorp Configuration Language) / Terraform
 # ------------------------------------------------------------------------------
 
 jenkins = {
   enabled     = true
   values_file = "values/jenkins.yaml"
   domain_name = "ci.example.com"
-
-  # release_name = "jenkins"
 }
 
 chartmuseum = {
@@ -22,20 +23,15 @@ chartmuseum = {
   values_file = "values/chartmuseum.yaml"
   domain_name = "charts.example.com"
 
-  # release_name = "chartmuseum"
-  # username = ""
-  # password = ""
+  # export TF_VAR_chartmuseum='{ username = "$()", password = "$()" }'
 }
 
 docker_registry = {
   enabled     = true
   values_file = "values/docker-registry.yaml"
   domain_name = "r.example.com"
-  # release_name = "docker-registry"
 
-  # export TF_VAR_docker_registry='{ username = "", password = "" }'
-  # username = ""
-  # password = ""
+  # export TF_VAR_docker_registry='{ username = "$()", password = "$()" }'
 }
 ```
 
