@@ -2,14 +2,17 @@
 
 # Exekube
 
-*Exekube* is a declarative ("Everything as Code") framework for administering Kubernetes clusters and deploying containerized software onto them. Exekube offers you full control over your infrastructure and container orchestration while also having a great default state with a *one-click experience*.
+*Exekube* is a declarative "Infrastructure as Code" framework for administering Kubernetes clusters and deploying containerized software onto them. Exekube offers you full control over your infrastructure and container orchestration while also having a great default state with a *one-click experience*.
 
 Here is a quick example of how you'd deploy CI tools using Exekube:
 
 ```tf
 # ------------------------------------------------------------------------------
-# Exekube 0.1.0
 # live/prod/kube-ci/inputs.tfvars | HCL (HashiCorp Configuration Language) / Terraform
+#
+# modules/kube-ci v0.1.0 (Exekube built-in Terraform module)
+#
+# This is the "client side" of a Terraform module. You simply supply values for a Kubernetes Helm chart and pick a domain name for your app.
 # ------------------------------------------------------------------------------
 
 jenkins = {
